@@ -12,6 +12,7 @@ vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = tr
 
 -- leader cf to use vim's default format
 vim.keymap.set('n', '<leader>cf', vim.lsp.buf.format, { desc = '[C]ode [F]ormat' })
+vim.keymap.set('v', '<leader>cf', vim.lsp.buf.format, { desc = '[C]ode [F]ormat' })
 
 -- In mac iterm2, remapped left option to Esc+, and is interpreted by nvim as the M key
 -- option backspace to delete word
