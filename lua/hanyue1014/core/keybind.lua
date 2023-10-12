@@ -30,3 +30,18 @@ vim.keymap.set('i', '<M-Right>', '<C-Right>')
 vim.keymap.set('i', '<M-Left>', '<C-Left>')
 vim.keymap.set('n', '<M-Right>', '<C-Right>')
 vim.keymap.set('n', '<M-Left>', '<C-Left>')
+
+-- window management
+vim.keymap.set("n", "<leader>wv", "<C-w>v") -- split window vertically
+vim.keymap.set("n", "<leader>ws", "<C-w>s") -- split window horizontally
+vim.keymap.set("n", "<leader>wh", "<C-w>h") -- focus window on left
+vim.keymap.set("n", "<leader>wl", "<C-w>l") -- focus window on right
+vim.keymap.set("n", "<leader>wj", "<C-w>j") -- focus window on top
+vim.keymap.set("n", "<leader>wk", "<C-w>k") -- focus window on bottom
+vim.keymap.set("n", "<leader>we", "<C-w>=") -- make split windows equal width & height
+vim.keymap.set("n", "<leader>wx", ":close<CR>") -- close current split window
+
+vim.keymap.set("n", "<leader>wo", ":tabnew<CR>") -- open new tab
+vim.keymap.set("n", "<leader>wx", ":tabclose<CR>") -- close current tab
+vim.keymap.set("n", "<leader>wn", ":tabn<CR>") --  go to next tab
+vim.keymap.set("n", "<leader>wp", ":tabp<CR>") --  go to previous tab
