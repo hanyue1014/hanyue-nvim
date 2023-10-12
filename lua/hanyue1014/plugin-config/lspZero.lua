@@ -104,3 +104,11 @@ cmp.setup({
         end, { "i", "s" }),
     })
 })
+
+-- leader cf to use vim's default format
+vim.keymap.set('n', '<leader>cf', vim.lsp.buf.format, { desc = '[C]ode [F]ormat' })
+vim.keymap.set('v', '<leader>cf', vim.lsp.buf.format, { desc = '[C]ode [F]ormat' })
+-- leader cr to rename identifier using vim's default lsp rename
+vim.keymap.set('n', '<leader>cr', vim.lsp.buf.rename, { desc = '[C]ode [R]ename' })
+vim.keymap.set('v', '<leader>cr', vim.lsp.buf.rename, { desc = '[C]ode [R]ename' })
+
