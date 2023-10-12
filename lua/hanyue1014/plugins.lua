@@ -47,6 +47,22 @@ local plugins = {
     "terrortylor/nvim-comment",
     {
         "nvim-neo-tree/neo-tree.nvim",
+        opts = {
+            filesystem = {
+                filtered_items = {
+                    visible = true,
+                    show_hidden_count = true,
+                    hide_dotfiles = false,
+                    hide_gitignored = true,
+                    hide_by_name = {
+                        '.git',
+                        '.DS_Store',
+                        'thumbs.db',
+                    },
+                    never_show = {},
+                },
+            }
+        },
         branch = "v3.x",
         dependencies = {
             "nvim-lua/plenary.nvim",
@@ -54,6 +70,10 @@ local plugins = {
             "MunifTanjim/nui.nvim",
         }
     },
+    {
+        'nvim-lualine/lualine.nvim',
+        requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+    }
 }
 
 local opts = {}
@@ -77,4 +97,5 @@ require("lazy").setup(plugins, opts)
 require("hanyue1014.plugin-config.telescope")
 require("hanyue1014.plugin-config.lspZero")
 require("hanyue1014.plugin-config.neotree")
+require("hanyue1014.plugin-config.lualine")
 require("nvim_comment").setup() -- no need own file cuz im cool with the defaults (will see if i wanna switch in the future)
