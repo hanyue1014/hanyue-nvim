@@ -105,10 +105,12 @@ cmp.setup({
     })
 })
 
--- leader cf to use vim's default format
-vim.keymap.set('n', '<leader>cf', vim.lsp.buf.format, { desc = '[C]ode [F]ormat' })
-vim.keymap.set('v', '<leader>cf', vim.lsp.buf.format, { desc = '[C]ode [F]ormat' })
--- leader cr to rename identifier using vim's default lsp rename
-vim.keymap.set('n', '<leader>cr', vim.lsp.buf.rename, { desc = '[C]ode [R]ename' })
-vim.keymap.set('v', '<leader>cr', vim.lsp.buf.rename, { desc = '[C]ode [R]ename' })
+-- setup nvim comment to be able to use the CommentToggle command
+require('nvim_comment').setup()
 
+-- leader lf to use vim's default format
+vim.keymap.set({ 'n', 'v' }, '<leader>lf', vim.lsp.buf.format, { desc = '[F]ormat' })
+-- leader lr to rename identifier using vim's default lsp rename
+vim.keymap.set({ 'n', 'v' }, '<leader>lr', vim.lsp.buf.rename, { desc = '[R]ename' })
+-- leader l/ to toggle comment
+vim.keymap.set({ 'n', 'v' }, '<leader>lc', function() vim.cmd("CommentToggle") end, { desc = 'Toggle [C]omment' })

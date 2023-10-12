@@ -4,14 +4,14 @@ vim.g.mapleader = " "
 vim.keymap.set("i", "kj", "<Esc>", { noremap = true })
 
 -- default nvim file explorer (will be removing soon possibly, gonna use neotree)
-vim.keymap.set("n", "<leader>ex", vim.cmd.Ex)
+vim.keymap.set("n", "<leader>ex", vim.cmd.Ex, { desc = "Open Netrw, default nvim explorer (Deprecated)" })
 
 -- use leader p to paste over selected content without yanking it to clipboard
 vim.keymap.set("x", "<leader>p", [["_dP]])
 
 -- use leader c or d when selected or not selected anything to yank the stuff into void (so won't override system clipboard)
-vim.keymap.set({"n", "v"}, "<leader>c", [["_c]])
-vim.keymap.set({"n", "v"}, "<leader>d", [["_d]])
+vim.keymap.set({"n", "v"}, "<leader>c", [["_c]], { desc = "[C]hange (yanking to void)" })
+vim.keymap.set({"n", "v"}, "<leader>d", [["_d]], { desc = "[D]elete (yanking to void)" })
 
 -- bttr line wrap
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })

@@ -4,7 +4,16 @@ local plugins = {
         name = "catppuccin",
         priority = 1000
     },
-    "folke/which-key.nvim",
+    {
+        "folke/which-key.nvim",
+        event = "VeryLazy",
+        init = function()
+            vim.o.timeout = true
+            vim.o.timeoutlen = 300
+        end,
+        opts = {
+        }
+    },
     "nvim-lua/plenary.nvim",
     {
         'nvim-telescope/telescope-fzf-native.nvim',
@@ -98,4 +107,5 @@ require("hanyue1014.plugin-config.telescope")
 require("hanyue1014.plugin-config.lspZero")
 require("hanyue1014.plugin-config.neotree")
 require("hanyue1014.plugin-config.lualine")
+require("hanyue1014.plugin-config.whichkey")
 require("nvim_comment").setup() -- no need own file cuz im cool with the defaults (will see if i wanna switch in the future)
