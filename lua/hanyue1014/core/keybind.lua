@@ -41,7 +41,5 @@ vim.keymap.set("n", "<leader>wk", "<C-w>k") -- focus window on bottom
 vim.keymap.set("n", "<leader>we", "<C-w>=") -- make split windows equal width & height
 vim.keymap.set("n", "<leader>wx", ":close<CR>") -- close current split window
 
-vim.keymap.set("n", "<leader>wo", ":tabnew<CR>") -- open new tab
-vim.keymap.set("n", "<leader>wx", ":tabclose<CR>") -- close current tab
-vim.keymap.set("n", "<leader>wn", ":tabn<CR>") --  go to next tab
-vim.keymap.set("n", "<leader>wp", ":tabp<CR>") --  go to previous tab
+-- find it unneccessary to open a file for just a command
+vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle, { desc = '[U]ndo Tree' }) -- toggle undo tree

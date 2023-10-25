@@ -84,6 +84,7 @@ local plugins = {
         requires = { 'nvim-tree/nvim-web-devicons', opt = true }
     },
     'tpope/vim-fugitive',
+    'mbbill/undotree',
 }
 
 local opts = {}
