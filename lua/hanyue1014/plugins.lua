@@ -82,7 +82,8 @@ local plugins = {
     {
         'nvim-lualine/lualine.nvim',
         requires = { 'nvim-tree/nvim-web-devicons', opt = true }
-    }
+    },
+    'tpope/vim-fugitive',
 }
 
 local opts = {}
