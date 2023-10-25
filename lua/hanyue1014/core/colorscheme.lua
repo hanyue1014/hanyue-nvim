@@ -4,7 +4,7 @@ require("catppuccin").setup({
         light = "latte",
         dark = "frappe",
     },
-    transparent_background = false, -- disables setting the background color., setting transparency in iterm2 background works good enough
+    transparent_background = true,
     show_end_of_buffer = false,     -- shows the '~' characters after the end of buffers
     term_colors = true,             -- sets terminal colors (e.g. `g:terminal_color_0`)
     dim_inactive = {
@@ -43,5 +43,6 @@ require("catppuccin").setup({
     },
 })
 
+vim.o.termguicolors = true
 -- setup must be called before loading
 vim.cmd.colorscheme "catppuccin"

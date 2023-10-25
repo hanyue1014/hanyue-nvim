@@ -3,6 +3,9 @@
 -- use system clipboard
 vim.o.clipboard = "unnamedplus"
 
+-- highlight current line for better appearance with transparency
+vim.o.cursorline = true
+
 -- enable line numbers
 vim.wo.number = true
 vim.wo.rnu = true

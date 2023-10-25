@@ -32,6 +32,7 @@ local luasnip = require("luasnip")
 
 -- <M-J> and <M-K> is the result of pressing left option and J or K
 cmp.setup({
+    -- make it bordered otherwise not clear cuz I have transparency enabled
     window = {
         completion = cmp.config.window.bordered(),
         documentation = cmp.config.window.bordered(),
@@ -40,14 +41,12 @@ cmp.setup({
         -- `Enter` key to confirm completion
         ['<CR>'] = cmp.mapping.confirm({ select = false }),
 
-        -- Ctrl+Space to trigger completion menu
-        ['<C-Space>'] = cmp.mapping.complete(),
-
         -- Navigate between snippet placeholder
         -- I actually dk what this does
         ['<C-f>'] = cmp_action.luasnip_jump_forward(),
         ['<C-b>'] = cmp_action.luasnip_jump_backward(),
 
+        -- scroll the documentation
         ['<C-u>'] = cmp.mapping.scroll_docs(-4),
         ['<C-d>'] = cmp.mapping.scroll_docs(4),
 
@@ -112,5 +111,14 @@ require('nvim_comment').setup()
 vim.keymap.set({ 'n', 'v' }, '<leader>lf', vim.lsp.buf.format, { desc = '[F]ormat' })
 -- leader lr to rename identifier using vim's default lsp rename
 vim.keymap.set({ 'n', 'v' }, '<leader>lr', vim.lsp.buf.rename, { desc = '[R]ename' })
--- leader l/ to toggle comment
+-- leader lc to toggle comment
 vim.keymap.set({ 'n', 'v' }, '<leader>lc', function() vim.cmd("CommentToggle") end, { desc = 'Toggle [C]omment' })
+
+-- with the help of telescope, but still is lsp related stuffs
+-- leader ld to go to definition if there is only one, otherwise show all of them in telescope
+vim.keymap.set({ 'n', 'v' }, '<leader>ld', require('telescope.builtin').lsp_definitions, { desc = 'Show [D]efinitions' })
+-- leader lt to go to type definition of the word under cursor if there is only one, otherwise show all of them in telescope
+vim.keymap.set({ 'n', 'v' }, '<leader>lt', require('telescope.builtin').lsp_type_definitions, { desc = 'Show [T]ype Definitions' })
+-- leader lr to show all references of the word under cursor if there is only one, otherwise show all of them in telescope
+vim.keymap.set({ 'n', 'v' }, '<leader>lr', require('telescope.builtin').lsp_references, { desc = 'Show [R]eferences' })
+
