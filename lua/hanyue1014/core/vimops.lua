@@ -23,6 +23,12 @@ vim.o.tabstop = 4
 vim.o.shiftwidth = 4
 vim.opt.smartindent = true
 
+-- allow undo tree to save undo history and access them
+vim.opt.swapfile = false
+vim.opt.backup = false
+vim.opt.undodir = os.getenv("HOME") .. "/.nvim/undodir"
+vim.opt.undofile = true
+
 -- always have 8 rows below
 vim.opt.scrolloff = 8
 
