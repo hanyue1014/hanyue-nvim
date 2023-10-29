@@ -113,12 +113,12 @@ vim.keymap.set({ 'n', 'v' }, '<leader>lf', vim.lsp.buf.format, { desc = '[F]orma
 vim.keymap.set({ 'n', 'v' }, '<leader>lr', vim.lsp.buf.rename, { desc = '[R]ename' })
 -- leader lc to toggle comment
 vim.keymap.set({ 'n', 'v' }, '<leader>lc', function() vim.cmd("CommentToggle") end, { desc = 'Toggle [C]omment' })
-
+-- leader li to view information on the selected text / text under cursor (as if hovering the text in vscode)
+vim.keymap.set({ 'n', 'v' }, '<leader>li', vim.lsp.buf.hover, { desc = 'Show [I]nfo' })
 -- with the help of telescope, but still is lsp related stuffs
 -- leader ld to go to definition if there is only one, otherwise show all of them in telescope
 vim.keymap.set({ 'n', 'v' }, '<leader>ld', require('telescope.builtin').lsp_definitions, { desc = 'Show [D]efinitions' })
--- leader lt to go to type definition of the word under cursor if there is only one, otherwise show all of them in telescope
-vim.keymap.set({ 'n', 'v' }, '<leader>lt', require('telescope.builtin').lsp_type_definitions, { desc = 'Show [T]ype Definitions' })
 -- leader lr to show all references of the word under cursor if there is only one, otherwise show all of them in telescope
 vim.keymap.set({ 'n', 'v' }, '<leader>lr', require('telescope.builtin').lsp_references, { desc = 'Show [R]eferences' })
-
+-- leader lt to see treesitter references
+vim.keymap.set({ 'n', 'v' }, '<leader>lt', require('telescope.builtin').treesitter, { desc = 'Show [T]reesitter Stuffs' })
