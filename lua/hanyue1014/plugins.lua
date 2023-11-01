@@ -81,10 +81,17 @@ local plugins = {
     },
     {
         'nvim-lualine/lualine.nvim',
-        requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+        dependencies = { 'nvim-tree/nvim-web-devicons', opt = true }
     },
     'tpope/vim-fugitive',
     'mbbill/undotree',
+    {
+        "ray-x/lsp_signature.nvim",
+        event = "VeryLazy",
+        opts = {},
+        config = function(_, opts) require 'lsp_signature'.setup(opts) end
+    },
+    { 'kevinhwang91/nvim-ufo', dependencies = { 'kevinhwang91/promise-async' } }
 }
 
 local opts = {}
@@ -111,3 +118,4 @@ require("hanyue1014.plugin-config.neotree")
 require("hanyue1014.plugin-config.lualine")
 require("hanyue1014.plugin-config.whichkey")
 require("nvim_comment").setup() -- no need own file cuz im cool with the defaults (will see if i wanna switch in the future)
+require("hanyue1014.plugin-config.ufo")

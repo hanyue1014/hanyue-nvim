@@ -1,7 +1,7 @@
 -- one stop config for all the LSPs (with LSPZero)
 local lsp_zero = require('lsp-zero')
 
-lsp_zero.on_attach(function(client, bufnr)
+lsp_zero.on_attach(function(_, bufnr)
     -- see :help lsp-zero-keybindings
     -- to learn the available actions
     lsp_zero.default_keymaps({ buffer = bufnr })
@@ -104,6 +104,37 @@ cmp.setup({
     })
 })
 
+-- to show function signature when typing (follow cursor position)
+local lsp_sig_cfg = {
+    hint_enable = false,
+    -- dk why still not entirely align with cursor, but whatever, ig that will do for now
+    -- and for some reason the further away the cursor is from the gutter, the further away is the window from the cursor
+    floating_window_off_x = function()
+        -- the width of the left side (numbers, signs etc) need to unpack first becuz for whatever reason it is given in nested table ({{ props }})
+        local gutterWidth = table.unpack(vim.fn.getwininfo(vim.fn.win_getid())).textoff;
+        local colnr = vim.api.nvim_win_get_cursor(vim.fn.win_getid())[2] + 1 -- cursor col number, +1 accomodate for fat cursor
+        return colnr + gutterWidth
+    end,
+    floating_window_off_y = function()
+        -- local linenr = vim.api.nvim_win_get_cursor(vim.fn.win_getid())[1] -- buf line number
+        local pumheight = vim.o.pumheight
+        local winline = vim.fn.winline()             -- line number in the window
+        local winheight = vim.fn.winheight(0)
+
+        -- window top
+        if winline - 1 < pumheight then
+            return pumheight
+        end
+
+        -- window bottom
+        if winheight - winline < pumheight then
+            return -pumheight
+        end
+        return 0
+    end,
+}
+require("lsp_signature").setup(lsp_sig_cfg)
+
 -- setup nvim comment to be able to use the CommentToggle command
 require('nvim_comment').setup()
 
@@ -112,7 +143,8 @@ vim.keymap.set({ 'n', 'v' }, '<leader>lf', vim.lsp.buf.format, { desc = '[F]orma
 -- leader lr to rename identifier using vim's default lsp rename
 vim.keymap.set({ 'n', 'v' }, '<leader>lr', vim.lsp.buf.rename, { desc = '[R]ename' })
 -- leader lc to toggle comment
-vim.keymap.set({ 'n', 'v' }, '<leader>lc', function() vim.cmd("CommentToggle") end, { desc = 'Toggle [C]omment' })
+vim.keymap.set('n', '<leader>lc', function() vim.cmd("CommentToggle") end, { desc = 'Toggle [C]omment' })
+vim.keymap.set('v', '<leader>lc', function() vim.cmd("'<,'>CommentToggle") end, { desc = 'Toggle [C]omment' })
 -- leader li to view information on the selected text / text under cursor (as if hovering the text in vscode)
 vim.keymap.set({ 'n', 'v' }, '<leader>li', vim.lsp.buf.hover, { desc = 'Show [I]nfo' })
 -- with the help of telescope, but still is lsp related stuffs
