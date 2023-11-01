@@ -1,3 +1,4 @@
+-- TODO let's customise this once I get a better hang at configuring neovim rn this big chunk of code is menacing
 local handler = function(virtText, lnum, endLnum, width, truncate)
     local newVirtText = {}
     local suffix = (' 󰁂 %d '):format(endLnum - lnum)

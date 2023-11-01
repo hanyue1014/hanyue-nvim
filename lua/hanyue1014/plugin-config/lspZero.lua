@@ -1,7 +1,7 @@
 -- one stop config for all the LSPs (with LSPZero)
 local lsp_zero = require('lsp-zero')
 
-lsp_zero.on_attach(function(_, bufnr)
+lsp_zero.on_attach(function(client, bufnr)
     -- see :help lsp-zero-keybindings
     -- to learn the available actions
     lsp_zero.default_keymaps({ buffer = bufnr })
@@ -152,5 +152,8 @@ vim.keymap.set({ 'n', 'v' }, '<leader>li', vim.lsp.buf.hover, { desc = 'Show [I]
 vim.keymap.set({ 'n', 'v' }, '<leader>ld', require('telescope.builtin').lsp_definitions, { desc = 'Show [D]efinitions' })
 -- leader lr to show all references of the word under cursor if there is only one, otherwise show all of them in telescope
 vim.keymap.set({ 'n', 'v' }, '<leader>lr', require('telescope.builtin').lsp_references, { desc = 'Show [R]eferences' })
--- leader lt to see treesitter references
-vim.keymap.set({ 'n', 'v' }, '<leader>lt', require('telescope.builtin').treesitter, { desc = 'Show [T]reesitter Stuffs' })
+-- leader ls to see symbols provided by treesitter
+vim.keymap.set({ 'n', 'v' }, '<leader>ls', require('telescope.builtin').treesitter, { desc = 'Show [S]ymbols (Provided by Treesitter)' })
+-- leader lc to see troubles
+vim.keymap.set('n', '<leader>lt', function() vim.cmd("TroubleToggle") end, { desc = 'Toggle [T]rouble (Diagnostics)' })
+
