@@ -105,6 +105,17 @@ local plugins = {
         "lukas-reineke/indent-blankline.nvim",
         main = "ibl",
         opts = {}
+    },
+    'nvim-treesitter/nvim-treesitter-context',
+    {
+        "kylechui/nvim-surround",
+        version = "*", -- Use for stability; omit to use `main` branch for the latest features
+        event = "VeryLazy",
+        config = function()
+            require("nvim-surround").setup({
+                -- Configuration here, or leave empty to use defaults
+            })
+        end
     }
 }
 
@@ -133,3 +144,4 @@ require("hanyue1014.plugin-config.lualine")
 require("hanyue1014.plugin-config.whichkey")
 require("nvim_comment").setup() -- no need own file cuz im cool with the defaults (will see if i wanna switch in the future)
 require("hanyue1014.plugin-config.ufo_cfg")
+require("ibl").setup()          -- cool with the configs
