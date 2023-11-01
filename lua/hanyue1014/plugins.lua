@@ -100,6 +100,11 @@ local plugins = {
             -- or leave it empty to use the default settings
             -- refer to the configuration section below
         },
+    },
+    {
+        "lukas-reineke/indent-blankline.nvim",
+        main = "ibl",
+        opts = {}
     }
 }
 
@@ -127,4 +132,4 @@ require("hanyue1014.plugin-config.neotree")
 require("hanyue1014.plugin-config.lualine")
 require("hanyue1014.plugin-config.whichkey")
 require("nvim_comment").setup() -- no need own file cuz im cool with the defaults (will see if i wanna switch in the future)
-require("hanyue1014.plugin-config.ufo")
+require("hanyue1014.plugin-config.ufo_cfg")
