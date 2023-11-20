@@ -116,6 +116,11 @@ local plugins = {
                 -- Configuration here, or leave empty to use defaults
             })
         end
+    },
+    {
+        "nvim-treesitter/nvim-treesitter-textobjects",
+        after = "nvim-treesitter",
+        requires = "nvim-treesitter/nvim-treesitter",
     }
 }
 
@@ -144,4 +149,5 @@ require("hanyue1014.plugin-config.lualine")
 require("hanyue1014.plugin-config.whichkey")
 require("nvim_comment").setup() -- no need own file cuz im cool with the defaults (will see if i wanna switch in the future)
 require("hanyue1014.plugin-config.ufo_cfg")
+require("hanyue1014.plugin-config.ts_objects")
 require("ibl").setup()          -- cool with the configs
