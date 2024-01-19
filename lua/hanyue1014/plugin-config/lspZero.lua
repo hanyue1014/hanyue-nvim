@@ -104,17 +104,16 @@ cmp.setup({
     })
 })
 
--- to show function signature when typing (follow cursor position)
 local lsp_sig_cfg = {
     hint_enable = false,
-    -- dk why still not entirely align with cursor, but whatever, ig that will do for now
-    -- and for some reason the further away the cursor is from the gutter, the further away is the window from the cursor
-    floating_window_off_x = function()
-        -- the width of the left side (numbers, signs etc) need to unpack first becuz for whatever reason it is given in nested table ({{ props }})
-        local gutterWidth = table.unpack(vim.fn.getwininfo(vim.fn.win_getid())).textoff;
-        local colnr = vim.api.nvim_win_get_cursor(vim.fn.win_getid())[2] + 1 -- cursor col number, +1 accomodate for fat cursor
-        return colnr + gutterWidth
-    end,
+    -- offset x is already based on cursor position, just slightly to the left
+    floating_window_off_x = 5,
+    -- -- floating_window_off_x = function()
+    --     -- the width of the left side (numbers, signs etc) need to unpack first becuz for whatever reason it is given in nested table ({{ props }})
+    --     local gutterWidth = table.unpack(vim.fn.getwininfo(vim.fn.win_getid())).textoff;
+    --     local colnr = vim.api.nvim_win_get_cursor(vim.fn.win_getid())[2] + 1 -- cursor col number, +1 accomodate for fat cursor
+    --     return colnr --+ gutterWidth
+    -- end,
     floating_window_off_y = function()
         -- local linenr = vim.api.nvim_win_get_cursor(vim.fn.win_getid())[1] -- buf line number
         local pumheight = vim.o.pumheight
