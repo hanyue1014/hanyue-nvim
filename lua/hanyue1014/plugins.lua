@@ -130,6 +130,13 @@ local plugins = {
             { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end,       desc = "Flash" },
             { "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
         },
+    },
+    {
+        "aznhe21/actions-preview.nvim",
+        config = function()
+            -- code action on <leader>la
+            vim.keymap.set({ "v", "n" }, "<leader>la", require("actions-preview").code_actions, { desc = "[A]ctions" })
+        end,
     }
 }
 
