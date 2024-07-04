@@ -4,10 +4,10 @@ require("neo-tree").setup({
         {
             event = "file_opened",
             handler = function(file_path)
-              -- auto close after open file
-              -- vimc.cmd("Neotree close")
-              -- OR
-              require("neo-tree.command").execute({ action = "close" })
+                -- auto close after open file
+                -- vimc.cmd("Neotree close")
+                -- OR
+                require("neo-tree.command").execute({ action = "close" })
             end
         },
     }
