@@ -5,11 +5,27 @@ vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = "[B]uffer" })
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = "[H]elp tags" })
 vim.keymap.set('n', '<leader>fi', builtin.current_buffer_fuzzy_find, { desc = "[I]n File" })
 
+-- <C-d> in insert mode to delete buffer in buffer picker
+require('telescope').setup {
+    pickers = {
+        buffers = {
+            show_all_buffers = true,
+            sort_lastused = true,
+            mappings = {
+                i = {
+                    ["<C-x>"] = "delete_buffer",
+                }
+            }
+        }
+
+    }
+}
+
 -- launch telescope find files on launch if no files provided
 vim.api.nvim_create_autocmd("VimEnter", {
-  callback = function()
-    if vim.fn.argv(0) == "" then
-      require("telescope.builtin").find_files()
-    end
-  end,
+    callback = function()
+        if vim.fn.argv(0) == "" then
+            require("telescope.builtin").find_files()
+        end
+    end,
 })
