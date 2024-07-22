@@ -1,10 +1,8 @@
 local wk = require("which-key")
 
-wk.register({
-    ["<leader>"] = {
-        f = { name = "[F]ile" },
-        l = { name = "[L]SP/Code" },
-        w = { name = "[W]indow" }
-    }
+wk.add({
+    { "<leader>f", group = "[F]ile" },
+    { "<leader>l", group = "[L]SP/Code" },
+    { "<leader>w", group = "[W]indow" },
 })
 
