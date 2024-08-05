@@ -154,5 +154,5 @@ vim.keymap.set({ 'n', 'v' }, '<leader>lr', require('telescope.builtin').lsp_refe
 -- leader ls to see symbols provided by treesitter
 vim.keymap.set({ 'n', 'v' }, '<leader>ls', require('telescope.builtin').treesitter, { desc = 'Show [S]ymbols (Provided by Treesitter)' })
 -- leader lt to see troubles
-vim.keymap.set('n', '<leader>lt', function() vim.cmd("TroubleToggle") end, { desc = 'Toggle [T]rouble (Diagnostics)' })
+vim.keymap.set('n', '<leader>lt', function() vim.cmd("Trouble diagnostics toggle") end, { desc = 'Toggle [T]rouble (Diagnostics)' })
 
