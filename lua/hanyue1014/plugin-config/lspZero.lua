@@ -9,7 +9,7 @@ end)
 
 require('mason').setup()
 require('mason-lspconfig').setup({
-    ensure_installed = { 'rust_analyzer', 'gopls', 'tsserver', 'pyright', 'java_language_server', 'clangd' },
+    ensure_installed = { 'rust_analyzer', 'gopls', 'tsserver', 'pyright', 'java_language_server', 'clangd', 'lua_ls', 'eslint', 'denols' },
     handlers = {
         lsp_zero.default_setup,
         lua_ls = function()
@@ -117,7 +117,7 @@ local lsp_sig_cfg = {
     floating_window_off_y = function()
         -- local linenr = vim.api.nvim_win_get_cursor(vim.fn.win_getid())[1] -- buf line number
         local pumheight = vim.o.pumheight
-        local winline = vim.fn.winline()             -- line number in the window
+        local winline = vim.fn.winline() -- line number in the window
         local winheight = vim.fn.winheight(0)
 
         -- window top
@@ -152,7 +152,8 @@ vim.keymap.set({ 'n', 'v' }, '<leader>ld', require('telescope.builtin').lsp_defi
 -- leader lr to show all references of the word under cursor if there is only one, otherwise show all of them in telescope
 vim.keymap.set({ 'n', 'v' }, '<leader>lr', require('telescope.builtin').lsp_references, { desc = 'Show [R]eferences' })
 -- leader ls to see symbols provided by treesitter
-vim.keymap.set({ 'n', 'v' }, '<leader>ls', require('telescope.builtin').treesitter, { desc = 'Show [S]ymbols (Provided by Treesitter)' })
+vim.keymap.set({ 'n', 'v' }, '<leader>ls', require('telescope.builtin').treesitter,
+    { desc = 'Show [S]ymbols (Provided by Treesitter)' })
 -- leader lt to see troubles
-vim.keymap.set('n', '<leader>lt', function() vim.cmd("Trouble diagnostics toggle") end, { desc = 'Toggle [T]rouble (Diagnostics)' })
-
+vim.keymap.set('n', '<leader>lt', function() vim.cmd("Trouble diagnostics toggle") end,
+    { desc = 'Toggle [T]rouble (Diagnostics)' })
