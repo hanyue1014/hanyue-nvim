@@ -13,8 +13,11 @@ vim.wo.rnu = true
 -- save undo history
 vim.o.undofile = true
 
--- enable break indent
-vim.o.breakindent = true
+-- enable word wrap and configure
+vim.o.wrap = true
+vim.o.breakindent = true -- enable breakindent such that wrapped lines will continue with the same indent
+vim.o.linebreak = true
+vim.o.showbreak = "↪ " -- show the ↪ character followed by a space for wrapped lines
 
 -- indent with tabs and each indent is 4 chars long
 vim.o.expandtab = true
