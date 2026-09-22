@@ -1,4 +1,7 @@
 # A hanyue1014 Neovim Configuration
+
+> Archived and moved on to kickstart.nvim based configuration [hanyue.nvim](https://github.com/hanyue1014/hanyue.nvim)
+
 This is a neovim installation with all the plugin and keymap goodies that hanyue1014 uses
 
 ## Personalised Development Environment
